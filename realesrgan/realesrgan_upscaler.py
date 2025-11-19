@@ -64,7 +64,7 @@ GPU_LIST = list(range(NUM_GPUS))
 # Set some paths.
 SCRIPT_PATH = pathlib.Path(__file__).parent.resolve()
 PARENT_PATH = SCRIPT_PATH.parent.absolute()
-MODELS_PATH = ''.join([str(PARENT_PATH), "/models"])
+MODELS_PATH = ''.join([str(PARENT_PATH), "/upscale_models"])
 
 # Set file paths.
 MOD_DIR = {'RealESRGAN_x4plus.pth': 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth',
@@ -73,18 +73,18 @@ MOD_DIR = {'RealESRGAN_x4plus.pth': 'https://github.com/xinntao/Real-ESRGAN/rele
            'ESRGAN_SRx4_DF2KOST_official-ff704c30.pth': 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.1/ESRGAN_SRx4_DF2KOST_official-ff704c30.pth'}
 
 # Download models.
-for i, (k, v) in enumerate(MOD_DIR.items()):
-    model_path = '/'.join([str(MODELS_PATH), k])
-    model_file = pathlib.Path(model_path)
-    print(model_file)
-    if not model_file.is_file():
-        response = requests.get(v, timeout=30)
-        if response.status_code == 200:
-            with open(model_path, 'wb') as file:
-                file.write(response.content)
-            print('File download succeeded!')
-        else:
-            print('File download failed!')
+# for i, (k, v) in enumerate(MOD_DIR.items()):
+#     model_path = '/'.join([str(MODELS_PATH), k])
+#     model_file = pathlib.Path(model_path)
+#     print(model_file)
+#     if not model_file.is_file():
+#         response = requests.get(v, timeout=30)
+#         if response.status_code == 200:
+#             with open(model_path, 'wb') as file:
+#                 file.write(response.content)
+#             print('File download succeeded!')
+#         else:
+#             print('File download failed!')
 
 # Read models in dir into list.
 MODS = []
